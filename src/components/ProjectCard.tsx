@@ -22,10 +22,17 @@ const ProjectCard = ({
   const handleDelete = async (id: string) => {
     const confirm = window.confirm("Are you sure you want to delete this generation?");
     if (!confirm) return;
-    console.log(id)
+    setGenerations((prev) => prev.filter((project) => project.id !== id));
   };
-  const togglePublish = async (id: string, publish: boolean) => {
-    console.log(projectId)
+
+  const togglePublish = async (id: string) => {
+    setGenerations((prev) =>
+      prev.map((project) =>
+        project.id === id
+          ? { ...project, isPublished: !project.isPublished }
+          : project
+      )
+    );
   };
   // ✅ Bonus UX: close menu on outside click
   useEffect(() => {
@@ -141,7 +148,7 @@ const ProjectCard = ({
                                 <Share2Icon size={14} /> share
 
                             </button>}
-                            <button onClick={()=> handleDelete(gen.id)} className="w-full flex gap-2 item-center px-4 py-2 hover:bg-red-950/10 text-red-400 cursor-poiner">
+                            <button onClick={()=> handleDelete(gen.id)} className="w-full flex gap-2 items-center px-4 py-2 hover:bg-red-950/10 text-red-400 cursor-pointer">
                                 <Trash2Icon size={14} /> Delete
                             </button>
 
@@ -207,10 +214,10 @@ const ProjectCard = ({
         {/* buttons */  }
         {!forCommunity && (
             <div className="mt-4 grid grid-cols-2 gap-3">
-                <GhostButton className="text-xs justify-center " onClick={()=> {navigate('/result/${gen.id}'); scrollTo(0,0)}}>
+                <GhostButton className="text-xs justify-center " onClick={() => { navigate(`/result/${gen.id}`); scrollTo(0, 0); }}>
                     View Details
                 </GhostButton>
-                <PrimaryButton className="rounded-md" onClick={()=> togglePublish(gen.id)}>
+                <PrimaryButton className="rounded-md" onClick={() => togglePublish(gen.id)}>
                     {gen.isPublished ? "Unpublish" : "Publish"}
                 </PrimaryButton>
             </div>

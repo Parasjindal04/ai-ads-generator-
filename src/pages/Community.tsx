@@ -41,7 +41,6 @@ const Community = () => {
               key={project.id}
               gen={project}
               setGenerations={setProjects}
-              forCommunity={true}
             />
           ))}
         </div>
