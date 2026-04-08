@@ -61,3 +61,17 @@ export interface SectionProps {
     buttonText: string;
     buttonHref: string;
 }
+export interface Project {
+  id: string;
+  productName: string;
+  productDescription?: string;
+  generatedImage?: string;
+  generatedVideo?: string;
+  isPublished?: boolean;
+  createdAt: string;
+  aspectRatio?: string;
+  userPrompt?: string;
+  uploadedImages?: string[];
+  isGenerating?: boolean;
+}
+

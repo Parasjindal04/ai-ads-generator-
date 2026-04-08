@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import type { Project } from "../types";
+
 import { EllipsisIcon, ImageIcon, Loader2Icon, PlaySquareIcon, Share2Icon, Trash2Icon } from "lucide-react";
-import { button, div } from "motion/react-client";
+
 import { GhostButton, PrimaryButton} from "./Buttons";
+import type { Project } from "../types";
+
 
 
 
